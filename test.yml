@@ -1,0 +1,16 @@
+name: Ali
+age: 21
+add: "add:  ssss"
+key:
+    key: aaa
+key4: {aaaa: dsssss,
+dddd: dddd , fggf: ddd}
+array:
+    - aaaa
+    - bbbb
+    - cccc
+    - dddd
+
+jsconArray: {}
+longTex:  dd
+aaa: aaa
