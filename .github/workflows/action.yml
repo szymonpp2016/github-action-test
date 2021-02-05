@@ -33,4 +33,4 @@ jobs:
           who-to-greet: AAAA
 
       - name: Log Greeing time
-        run: echo "${{ steps.greet.output.time}}"
+        run: echo "${{ steps.greet.outputs.time}}"
