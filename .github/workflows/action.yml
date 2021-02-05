@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: List Files
-        run: 
+        run: |
           pwd
           ls -a  
           echo $GITHUB_SHA
