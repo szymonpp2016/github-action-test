@@ -24,7 +24,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
+      - name: List Files
+        run: 
+          pwd
+          ls  
       # Runs a single command using the runners shell
       - name: Simple JS Action
         id: greet
