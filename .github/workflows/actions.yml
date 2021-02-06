@@ -21,6 +21,8 @@ on:
   #    - master
   #    - feature/** # mach 0 or more charak. but not [null] (not /)
   #    - feature/* # mach 0 or more charak. and    [null] (  /)
+  #    - !feature/* # Ignore
+  
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -34,7 +36,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: PAYLOAD
+      - name: PAYLOAD # you can spec. in POSTMAN / API POST - request - to insert STRINg to GitHub Action
         run: echo ${{ github.event.client_payload.env }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 
