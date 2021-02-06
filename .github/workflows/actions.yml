@@ -2,16 +2,25 @@
 
 name: NEW_ACTION
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  # schedule: 
+  # schedule:
   #   - cron: "0/5 * * * *"
   repository_dispatch:
     types: [build1]
 
   pull_request:
-    branches: [ master ]
+    branches: [master]
+
+  # push:
+  #   branches: [master]
+
+  # push:
+  #   branches: 
+  #    - master
+  #    - feature/** # mach 0 or more charak. but not [null] (not /)
+  #    - feature/* # mach 0 or more charak. and    [null] (  /)
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -25,13 +34,15 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: PAYLOAD
+        run: echo ${{ github.event.client_payload.env }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-     
+
       - name: List files before
         run: |
           pwd
           ls -a
-      - name: checkout 
+      - name: checkout
         uses: actions/checkout@v2
 
       - name: List Files
@@ -46,10 +57,9 @@ jobs:
       - name: Simple JS Action
         id: greet
         uses: actions/hello-world-javascript-action@v1
-        with: 
+        with:
           who-to-greet: AAAA
 
       - name: Log Greeing time
         run: echo "${{ steps.greet.outputs.time}}"
-
         #new brach
