@@ -4,23 +4,29 @@ on: push
 jobs:
   one:
     runs-on: ubuntu-latest
+     # wszytsko co jest w if - jets traktowane jako expression ${{}}
+    if: 
+      github.event_name ==  'push'
     steps:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: eccho "$GITHUB_CONTEXT"
       - name: Dump job context
+        if: failure()
         env:
           JOB_CONTEXT: ${{ toJSON(job) }}
-        run: echo "$JOB_CONTEXT"
+        run: echo "POWINNO BYC $JOB_CONTEXT"
       - name: Dump steps context
+        if: sucessful()
         env:
           STEPS_CONTEXT: ${{ toJSON(steps) }}
-        run: echo "$STEPS_CONTEXT"
+        run: echo "NIE POWINNO $STEPS_CONTEXT"
       - name: Dump runner context
+        if: allways()
         env:
           RUNNER_CONTEXT: ${{ toJSON(runner) }}
-        run: echo "$RUNNER_CONTEXT"
+        run: echo "POWINNO $RUNNER_CONTEXT"
       - name: Dump strategy context
         env:
           STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
@@ -29,3 +35,12 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJSON(matrix) }}
         run: echo "$MATRIX_CONTEXT"
+
+
+#         contains(github.event.issue.labels.*.name, 'bug')
+#         startsWith( searchString, searchValue )
+#         endsWith( searchString, searchValue )
+#         format( string, replaceValue0, replaceValue1, ..., replaceValueN)
+#         Returns 'Hello Mona the Octocat'
+
+# format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat')
