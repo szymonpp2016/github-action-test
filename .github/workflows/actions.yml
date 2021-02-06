@@ -7,6 +7,9 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   # schedule: 
   #   - cron: "0/5 * * * *"
+  repository_dispatch:
+    types: [build1]
+
   pull_request:
     branches: [ master ]
 
