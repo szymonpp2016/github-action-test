@@ -7,6 +7,7 @@ jobs:
      # wszytsko co jest w if - jets traktowane jako expression ${{}}
     if: 
       github.event_name ==  'push'
+    timeout-minutes: 5  
     steps:
       - name: Dump GitHub context
         env:
@@ -17,6 +18,7 @@ jobs:
         env:
           JOB_CONTEXT: ${{ toJSON(job) }}
         run: echo "POWINNO BYC $JOB_CONTEXT"
+        continue-on-error: true
       - name: Dump steps context
         if: success()
         env:
