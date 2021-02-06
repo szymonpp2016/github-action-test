@@ -23,6 +23,10 @@ jobs:
       matrix: 
         # os: [ macos-latest, ubuntu-latest]   # to jest płacone z runs-on
         node-version: [6,8,10]
+        exclude: 
+          - node_version: 6
+          #os: ubuntu-letest
+          
     # runs-on: ${{ matrix.os }}
     runs-on: ubuntu-latest
 
