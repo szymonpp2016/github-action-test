@@ -22,11 +22,11 @@ jobs:
       fail-fast: true # nawet jak jedno padnie 6 , 8 , 10 - bo we wszystkich srodowiskach bedzie to zrobione - jak tru - padnie - jak fail - reszta tez sproboje run
       matrix: 
         # os: [ macos-latest, ubuntu-latest]   # to jest płacone z runs-on
-        node-version: [6,8,10]
+        node_version: [6,8,10]
         exclude: 
           - node_version: 6
           #os: ubuntu-letest
-          
+
     # runs-on: ${{ matrix.os }}
     runs-on: ubuntu-latest
 
