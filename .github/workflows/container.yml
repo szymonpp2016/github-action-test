@@ -1,0 +1,19 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CONTAINER
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+jobs:
+  node-docker:
+    runs-on: ubuntu-latest
+    container: 
+      image: node:13.05.0-alpine3.10
+    steps:
+      - name: Version
+        run: node -v
+
+            
