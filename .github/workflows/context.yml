@@ -18,7 +18,7 @@ jobs:
           JOB_CONTEXT: ${{ toJSON(job) }}
         run: echo "POWINNO BYC $JOB_CONTEXT"
       - name: Dump steps context
-        if: sucessful()
+        if: success()
         env:
           STEPS_CONTEXT: ${{ toJSON(steps) }}
         run: echo "NIE POWINNO $STEPS_CONTEXT"
