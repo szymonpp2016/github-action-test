@@ -17,8 +17,15 @@ jobs:
   # This workflow contains a single job called "build"
   node-VERSION:
     timeout-minutes: 5  
+
+    strategy:
+      fail-fast: true # nawet jak jedno padnie 6 , 8 , 10 - bo we wszystkich srodowiskach bedzie to zrobione - jak tru - padnie - jak fail - reszta tez sproboje run
+      matrix: 
+        # os: [ macos-latest, ubuntu-latest]   # to jest płacone z runs-on
+        node-version: [6,8,10]
+    # runs-on: ${{ matrix.os }}
     runs-on: ubuntu-latest
- 
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -29,7 +36,7 @@ jobs:
         run: node -v
       - uses: actions/setup-node@v2
         with:
-          node-version: '6'
+          node-version: ${{ matrix.node_version}}
       - run: node -v
  
             
