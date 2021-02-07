@@ -38,7 +38,7 @@ jobs:
   encrypt_decrypt:
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@master
+      - uses: action/checkout@v2
       - name: Decrypt
       #         gpg --quiet --batch --yes --decrypt --passpharse="$PASSPHARSE"  random.txt $HOME/secret.json
         run: |
