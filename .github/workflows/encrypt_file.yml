@@ -39,9 +39,12 @@ jobs:
       - name: encrypt_decrypt
         run: |
           gpg --symmetric --cipher-algo AES256 --passphrase="$PASSPHARSE" --batch --yes someFile.txt
+          echo "\n orginalny plik"
           cat someFile.txt
+          echo "\n zakodowany plik"
           cat someFile.txt.gpg
           gpg --batch --yes --decrypt  --passphrase="$PASSPHARSE" someFile.txt.gpg > someFileDec.txt
+          echo "\n zdekodowany plik"
           cat someFileDec.txt
         env:
            PASSPHARSE: ${{secrets.PASSPHARSE}}
