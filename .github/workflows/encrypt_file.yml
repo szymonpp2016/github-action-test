@@ -32,7 +32,6 @@ jobs:
           git pull
           ls -a
           echo $RANDOM >> someFile.txt
-          gpg 
           git add -A
           git commit -m "random file"
           git push
