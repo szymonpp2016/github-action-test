@@ -1,4 +1,4 @@
-name: SHOULD_USE_ENV_VAR_AND_ADD_TO_GIT_FILE
+name: SHOULD_USE_ENV_VAR_CREATE_ISSUE_AND_ADD_TO_GIT_FILE
 on:
 
   workflow_dispatch:

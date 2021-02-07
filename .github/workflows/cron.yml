@@ -1,0 +1,55 @@
+name: SHOULD_BE_TRIGGERD_BY_DISPACHES
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  schedule:
+    - cron: "0/10 20-23 * * 1"
+
+# Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  
+  # This workflow contains a single job called "DISPATCHES_PAYLOAD"
+  DISPATCHES_PAYLOAD:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    timeout-minutes: 5  
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: PAYLOAD # you can spec. in POSTMAN / API POST - request - to insert STRING to GitHub Action
+        run: echo ${{ github.event.client_payload.env }}
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+
+      - name: List files before
+        run: |
+          pwd
+          ls -a
+
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: List Files
+        run: |
+          pwd
+          ls -a
+      - name: List of env      
+          echo "GITHUB_SHA  {{$GITHUB_SHA}}"
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "{{github.token }}"
+          echo $GITHUB_CONTEXT
+          echo $GITHUB_RUN_ID
+
+
+      # Runs a single command using the runners shell
+      - name: Simple JS Action
+        id: greet
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: AAAA
+
+      - name: Log Greeting time
+        run: echo "${{ steps.greet.outputs.time}}"
