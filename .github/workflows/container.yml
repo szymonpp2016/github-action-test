@@ -23,7 +23,7 @@ jobs:
       - name: steps-with-docker
         uses: docker://node:12.20.1-alpine3.10
         with:
-          entrypoint: 'bin/echo' 
+          entrypoint: 'echo' 
           args: 'hello worlds' 
 
       - name: steps-with-docker-2
