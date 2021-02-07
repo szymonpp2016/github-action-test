@@ -35,17 +35,24 @@ jobs:
           git add -A
           git commit -m "random file"
           git push
-  encrypt_decrypt:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: action/checkout@v2
-      - name: Decrypt
-      #         gpg --quiet --batch --yes --decrypt --passpharse="$PASSPHARSE"  random.txt $HOME/secret.json
-        run: |
           gpg --symmetric --cipher-algo AES256 --passphrase="$PASSPHARSE"" --batch --yes someFile.txt
           cat someFile.txt.gpg
           gpg --batch --yes --decrypt  --passphrase="$PASSPHARSE" someFile.txt.gpg > someFileDec.txt
           cat someFileDec.txt
         env:
            PASSPHARSE: ${{secrets.PASSPHARSE}}
+
+    #          encrypt_decrypt:
+    # runs-on: ubuntu-latest
+    # steps:
+    #   - uses: action/checkout@v2
+    #   - name: Decrypt
+    #   #         gpg --quiet --batch --yes --decrypt --passpharse="$PASSPHARSE"  random.txt $HOME/secret.json
+    #     run: |
+    #       gpg --symmetric --cipher-algo AES256 --passphrase="$PASSPHARSE"" --batch --yes someFile.txt
+    #       cat someFile.txt.gpg
+    #       gpg --batch --yes --decrypt  --passphrase="$PASSPHARSE" someFile.txt.gpg > someFileDec.txt
+    #       cat someFileDec.txt
+    #     env:
+    #        PASSPHARSE: ${{secrets.PASSPHARSE}}
   
