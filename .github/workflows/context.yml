@@ -10,8 +10,8 @@ jobs:
   one:
     runs-on: ubuntu-latest
      # wszytsko co jest w if - jets traktowane jako expression ${{}}
-    if: 
-      github.event_name ==  'push'
+    # if: 
+    #   github.event_name ==  'push'
     timeout-minutes: 5  
     steps:
       - name: Dump GitHub context
