@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: matrix
+name: SHULD_BUILD_USE_MATRIX
 
 # Controls when the action will run. 
 on:
@@ -8,6 +8,8 @@ on:
   push:
     branches: [ master ]
  
+  repository_dispatch:
+    types: [matrix]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -42,5 +44,3 @@ jobs:
         with:
           node-version: ${{ matrix.node_version}}
       - run: node -v
- 
-            

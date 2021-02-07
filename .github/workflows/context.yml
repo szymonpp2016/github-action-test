@@ -1,5 +1,10 @@
-name: CONTEXT
-on: push
+name: SHOUDL_SHOW_CONTEXT_VARIABLE
+
+on: 
+  workflow_dispatch:
+  
+  repository_dispatch:
+    types: [variable]
 
 jobs:
   one:

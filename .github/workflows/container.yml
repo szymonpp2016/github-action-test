@@ -1,12 +1,17 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CONTAINER
+# Action should use diffrent container then is set in  JOBS
+name: SHOULD_USE_CONTAINER 
 
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
+
+  workflow_dispatch:
+
+  repository_dispatch:
+    types: [container]
+
 jobs:
   node-docker:
     runs-on: ubuntu-latest
@@ -26,5 +31,3 @@ jobs:
         with:
           entrypoint: /usr/local/bin/node 
           args: -v 
-
-            

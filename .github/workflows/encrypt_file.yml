@@ -1,0 +1,52 @@
+name: SHOULD_USE_ENCRYPT_FILE
+
+on:
+  workflow_dispatch:
+  
+  repository_dispatch:
+    types: [encrypt]
+
+env:
+  WF_ENV: ${{secrets.WF_ENV}} TEST 1
+
+jobs:
+  add_file_to_git:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push
+        run: |
+          pwd
+          ls -a
+          git init
+          echo " GITHUB_ACTOR  $GITHUB_ACTOR "
+          echo " GITHUB_REPOSITORY $GITHUB_REPOSITORY"
+          echo  "$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git"
+
+          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
+
+          git config --global user.email "my-bot@bot.com"
+          git config --global user.name "my-bot@bot.com"
+          git fetch 
+          git checkout master
+          git branch --set-upstream-to=origin/master
+          git pull
+          ls -a
+          echo $RANDOM >> someFile.txt
+          gpg 
+          git add -A
+          git commit -m "random file"
+          git push
+  encrypt_decrypt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v1
+      - name: Decrypt
+      #         gpg --quiet --batch --yes --decrypt --passpharse="$PASSPHARSE"  random.txt $HOME/secret.json
+        run: |
+          gpg --symmetric --cipher-algo AES256 --passphrase="$PASSPHARSE"" --batch --yes someFile.txt
+          cat someFile.txt.gpg
+          gpg --batch --yes --decrypt  --passphrase="$PASSPHARSE" someFile.txt.gpg > someFileDec.txt
+          cat someFileDec.txt
+        env:
+           PASSPHARSE: ${{secrets.PASSPHARSE}}
+  

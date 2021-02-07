@@ -1,10 +1,16 @@
-name: ENV Var.
-on: push
+name: SHOULD_USE_ENV_VAR_AND_ADD_TO_GIT_FILE
+on:
+
+  workflow_dispatch:
+  
+  repository_dispatch:
+    types: [git]
+
 env:
   WF_ENV: ${{secrets.WF_ENV}} TEST 1
 
 jobs:
-  create_issue:
+  add_file_to_git:
     runs-on: ubuntu-latest
     steps:
       - name: Push
@@ -37,7 +43,9 @@ jobs:
   #       run: gpg --quiet --batch --yes --decrypt --passpharse="$PASSPHARSE"  --output $HOME/secret.json
   #       env:
   #         PASSPHARSE: ${{secrets.PASSPHARSE}}
-  log-env:
+  log_env_variables:
+    needs: [add_file_to_git]
+
     runs-on: ubuntu-latest
     timeout-minutes: 5  
     env:
@@ -55,11 +63,14 @@ jobs:
           echo "WF_ENV: OK2 ${WF_ENV} "
           echo "JOB_ENV: OK2 ${JOB_ENV} "
           echo "STEP_ENV: SHOULD FAIL ${STEP_ENV} " 
-  log-defoult-env:
+
+  create_issue:
+    needs: [log_env_variables]
     runs-on: ubuntu-latest
     steps:
       - name: GITHUB Env
         run: |
+          echo "${HOME}"
           echo "${HOME}"
           echo "${GITHUB_ACTION}"
           echo "${GITHUB_ACTIONS}"
