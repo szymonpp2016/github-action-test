@@ -36,7 +36,7 @@ jobs:
           git commit -m "random file"
           git push
       - name: encrypt_decrypt
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v1
         run: |
           gpg --symmetric --cipher-algo AES256 --passphrase="$PASSPHARSE"" --batch --yes someFile.txt
           cat someFile.txt.gpg
