@@ -36,6 +36,8 @@ jobs:
           git commit -m "random file"
           git push
           echo "Koniec push"
+      - name: encrypt_decrypt
+        run: |
           gpg --symmetric --cipher-algo AES256 --passphrase="$PASSPHARSE" --batch --yes someFile.txt
           cat someFile.txt
           cat someFile.txt.gpg
