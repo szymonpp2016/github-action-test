@@ -35,24 +35,26 @@ jobs:
         run: |
           pwd
           ls -a
-      - name: List of env    
+      - name: List of GITHUB variable   
         run: | 
-          echo "1. GITHUB_SHA  $GITHUB_SHA"
-          echo "2. GITHUB_REPOSITORY $GITHUB_REPOSITORY"
-          echo "3. GITHUB_WORKSPACE $GITHUB_WORKSPACE"
-          echo "4. github.token  {{github.token }}"
-          echo "5. GITHUB_CONTEXT $GITHUB_CONTEXT"
-          echo "6. GITHUB_RUN_ID $GITHUB_RUN_ID"
-          echo "6. GITHUB_RUN_NUMBER $GITHUB_RUN_NUMBER"
-          echo "6. GITHUB_ACTION $GITHUB_ACTION"
-          echo "6. GITHUB_ACTIONS $GITHUB_ACTIONS"
-          echo "6. GITHUB_ACTOR $GITHUB_ACTOR"
-          echo "6. GITHUB_REPOSITORY $GITHUB_REPOSITORY"
-          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"  # The name of the webhook event that triggered the workflow.
-          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"
-          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"
-          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"
-          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"
+          echo "1. GITHUB_SHA  $GITHUB_SHA"               #  	The commit SHA that triggered the workflow.  
+          echo "3. GITHUB_WORKSPACE $GITHUB_WORKSPACE"    #   The GitHub workspace directory path.
+          echo "4. github.token  {{github.token }}"       #   ?
+          echo "5. GITHUB_CONTEXT $GITHUB_CONTEXT"        #   ?
+          echo "6. GITHUB_RUN_ID $GITHUB_RUN_ID"          #   A unique number for each run within a repository. 
+          echo "6. GITHUB_RUN_NUMBER $GITHUB_RUN_NUMBER"  #   Unique number for each run of a particular workflow in a repository.
+          echo "6. GITHUB_ACTION $GITHUB_ACTION"          #   The unique identifier (id) of the action.
+          echo "6. GITHUB_ACTIONS $GITHUB_ACTIONS"        #   Always set to true when GitHub Actions is running the workflow.
+          echo "6. GITHUB_ACTOR $GITHUB_ACTOR"            #   The name of the person or app that initiated the workflow. 
+          echo "6. GITHUB_REPOSITORY $GITHUB_REPOSITORY"  #   The owner and repository name. For example, octocat/Hello-World.
+          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"  #   The name of the webhook event that triggered the workflow.
+          echo "6. GITHUB_EVENT_PATH $GITHUB_EVENT_PATH"  #   The path of the file with the complete webhook event payload.
+          echo "6. GITHUB_REF $GITHUB_REF"                #   Only set for pull request events. The name of the head branch.
+          echo "6. GITHUB_BASE_REF $GITHUB_BASE_REF"      #   Only set for pull request events. The name of the base branch.
+          echo "6. GITHUB_SERVER_URL $GITHUB_SERVER_URL"  #   Returns the URL of the GitHub server.
+          echo "6. GITHUB_API_URL $GITHUB_API_URL"        #   Returns the API URL.
+          echo "6. GITHUB_GRAPHQL_URL $GITHUB_GRAPHQL_URL"#   Returns the GraphQL API URL..
+
 
       # Runs a single command using the runners shell
       - name: Simple JS Action
