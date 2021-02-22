@@ -37,13 +37,22 @@ jobs:
           ls -a
       - name: List of env    
         run: | 
-          echo "GITHUB_SHA  {{$GITHUB_SHA}}"
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_WORKSPACE
-          echo "{{github.token }}"
-          echo $GITHUB_CONTEXT
-          echo $GITHUB_RUN_ID
-
+          echo "1. GITHUB_SHA  $GITHUB_SHA"
+          echo "2. GITHUB_REPOSITORY $GITHUB_REPOSITORY"
+          echo "3. GITHUB_WORKSPACE $GITHUB_WORKSPACE"
+          echo "4. github.token  {{github.token }}"
+          echo "5. GITHUB_CONTEXT $GITHUB_CONTEXT"
+          echo "6. GITHUB_RUN_ID $GITHUB_RUN_ID"
+          echo "6. GITHUB_RUN_NUMBER $GITHUB_RUN_NUMBER"
+          echo "6. GITHUB_ACTION $GITHUB_ACTION"
+          echo "6. GITHUB_ACTIONS $GITHUB_ACTIONS"
+          echo "6. GITHUB_ACTOR $GITHUB_ACTOR"
+          echo "6. GITHUB_REPOSITORY $GITHUB_REPOSITORY"
+          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"  # The name of the webhook event that triggered the workflow.
+          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"
+          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"
+          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"
+          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"
 
       # Runs a single command using the runners shell
       - name: Simple JS Action
