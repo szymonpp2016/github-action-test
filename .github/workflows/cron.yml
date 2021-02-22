@@ -57,8 +57,8 @@ jobs:
       - name: List of GitHubActions CONTEXT  
         id: cont
         run: | 
-          echo "1. steps.greet.outputs.time  ${{ steps.greet.outputs.time }}  "                 #  	 
-          echo "3. steps.cont.outputs.time  ${{ steps.cont.outputs.time }}  "                 #  	 
-          echo "1. job.container.id ${{ job.container.id }}  "                 #  	 
-          echo "3. job.status ${{ job.status }}  "                 #  	           
-          echo "4. runner.os ${{ runner.os }}"         #    
+          echo "1. steps.greet.outputs.time  ${{ steps.greet.outputs.time }}  "      
+          echo "3. steps.cont.outputs.time  ${{ steps.cont.outputs.time }}  "          
+          echo "1. job.container.id ${{ job.container.id }}  "                 
+          echo "3. job.status ${{ job.status }}  "                        
+          echo "4. runner.os ${{ runner.os }}"        
