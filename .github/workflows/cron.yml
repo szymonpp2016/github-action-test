@@ -1,4 +1,4 @@
-name: SHOULD_BE_TRIGGERD_BY_DISPACHES
+name: SHOULD_BE_TRIGGERD_BY_CRON
 
 # Controls when the action will run.
 on:
@@ -35,7 +35,8 @@ jobs:
         run: |
           pwd
           ls -a
-      - name: List of env      
+      - name: List of env    
+        run: | 
           echo "GITHUB_SHA  {{$GITHUB_SHA}}"
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
