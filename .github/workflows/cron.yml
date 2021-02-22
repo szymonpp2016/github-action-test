@@ -31,37 +31,33 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: List Files
+      - name: List of FILES
         run: |
           pwd
           ls -a
-      - name: List of GITHUB variable   
+      - name: List of GithubActions VARIABLES  
         run: | 
-          echo "1. GITHUB_SHA  $GITHUB_SHA"               #  	The commit SHA that triggered the workflow.  
-          echo "3. GITHUB_WORKSPACE $GITHUB_WORKSPACE"    #   The GitHub workspace directory path.
-          echo "4. github.token  {{github.token }}"       #   ?
-          echo "5. GITHUB_CONTEXT $GITHUB_CONTEXT"        #   ?
-          echo "6. GITHUB_RUN_ID $GITHUB_RUN_ID"          #   A unique number for each run within a repository. 
-          echo "6. GITHUB_RUN_NUMBER $GITHUB_RUN_NUMBER"  #   Unique number for each run of a particular workflow in a repository.
-          echo "6. GITHUB_ACTION $GITHUB_ACTION"          #   The unique identifier (id) of the action.
-          echo "6. GITHUB_ACTIONS $GITHUB_ACTIONS"        #   Always set to true when GitHub Actions is running the workflow.
-          echo "6. GITHUB_ACTOR $GITHUB_ACTOR"            #   The name of the person or app that initiated the workflow. 
-          echo "6. GITHUB_REPOSITORY $GITHUB_REPOSITORY"  #   The owner and repository name. For example, octocat/Hello-World.
-          echo "6. GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"  #   The name of the webhook event that triggered the workflow.
-          echo "6. GITHUB_EVENT_PATH $GITHUB_EVENT_PATH"  #   The path of the file with the complete webhook event payload.
-          echo "6. GITHUB_REF $GITHUB_REF"                #   Only set for pull request events. The name of the head branch.
-          echo "6. GITHUB_BASE_REF $GITHUB_BASE_REF"      #   Only set for pull request events. The name of the base branch.
-          echo "6. GITHUB_SERVER_URL $GITHUB_SERVER_URL"  #   Returns the URL of the GitHub server.
-          echo "6. GITHUB_API_URL $GITHUB_API_URL"        #   Returns the API URL.
-          echo "6. GITHUB_GRAPHQL_URL $GITHUB_GRAPHQL_URL"#   Returns the GraphQL API URL..
+          echo "1. GITHUB_SHA  $GITHUB_SHA"                 #  	The commit SHA that triggered the workflow.  
+          echo "2. GITHUB_WORKSPACE $GITHUB_WORKSPACE"      #   The GitHub workspace directory path.
+          echo "3. GITHUB_RUN_ID $GITHUB_RUN_ID"            #   A unique number for each run within a repository. 
+          echo "4. GITHUB_RUN_NUMBER $GITHUB_RUN_NUMBER"    #   Unique number for each run of a particular workflow in a repository.
+          echo "5. GITHUB_ACTION $GITHUB_ACTION"            #   The unique identifier (id) of the action.
+          echo "6. GITHUB_ACTIONS $GITHUB_ACTIONS"          #   Always set to true when GitHub Actions is running the workflow.
+          echo "7.  GITHUB_ACTOR $GITHUB_ACTOR"             #   The name of the person or app that initiated the workflow. 
+          echo "8.  GITHUB_REPOSITORY $GITHUB_REPOSITORY"   #   The owner and repository name. For example, octocat/Hello-World.
+          echo "9.  GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"   #   The name of the webhook event that triggered the workflow.
+          echo "10. GITHUB_EVENT_PATH $GITHUB_EVENT_PATH"   #   The path of the file with the complete webhook event payload.
+          echo "11. GITHUB_REF $GITHUB_REF"                 #   Only set for pull request events. The name of the head branch.
+          echo "12. GITHUB_BASE_REF $GITHUB_BASE_REF"       #   Only set for pull request events. The name of the base branch.
+          echo "13. GITHUB_SERVER_URL $GITHUB_SERVER_URL"   #   Returns the URL of the GitHub server.
+          echo "14. GITHUB_API_URL $GITHUB_API_URL"         #   Returns the API URL.
+          echo "1. GITHUB_GRAPHQL_URL $GITHUB_GRAPHQL_URL" #   Returns the GraphQL API URL..
 
-
-      # Runs a single command using the runners shell
-      - name: Simple JS Action
-        id: greet
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: AAAA
-
-      - name: Log Greeting time
-        run: echo "${{ steps.greet.outputs.time}}"
+      - name: List of GitHubActions CONTEXT  
+        id: cont
+        run: | 
+          echo "1. steps.greet.outputs.time  ${{ steps.greet.outputs.time }}  "                 #  	 
+          echo "3. steps.cont.outputs.time  ${{ steps.cont.outputs.time }}  "                 #  	 
+          echo "1. job.container.id ${{ job.container.id }}  "                 #  	 
+          echo "3. job.status ${{ job.status }}  "                 #  	           
+          echo "4. runner.os {{ runner.os }}"         #    
